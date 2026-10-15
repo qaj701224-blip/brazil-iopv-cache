@@ -4,7 +4,7 @@
     "diff": [
       {
         "f12": "520870",
-        "f124": 1792032893,
+        "f124": 1792032968,
         "f297": 20261015,
         "f441": 1.3037
       }
@@ -13,8 +13,8 @@
   "relay": {
     "schema_version": 1,
     "source": "push2delay.eastmoney.com/ulist.np/get",
-    "quote_time_bjt": "2026-10-15T10:54:53+08:00",
-    "published_at_bjt": "2026-10-15T10:54:53.505351+08:00",
+    "quote_time_bjt": "2026-10-15T10:56:08+08:00",
+    "published_at_bjt": "2026-10-15T10:56:09.459322+08:00",
     "max_quote_age_seconds": 300
   }
 }
