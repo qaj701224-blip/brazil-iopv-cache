@@ -72,7 +72,11 @@ def main():
         print('Outside A-share session; no publication')
         return
     result = fetch_snapshot()
-    Path('quote.json').write_text(json.dumps(result, ensure_ascii=True, indent=2) + '\n', encoding='utf-8')
+    serialized = json.dumps(result, ensure_ascii=True, indent=2) + '\n'
+    Path('quote.json').write_text(serialized, encoding='utf-8')
+    site = Path('_site')
+    site.mkdir(exist_ok=True)
+    (site / 'quote.json').write_text(serialized, encoding='utf-8')
     row = result['data']['diff'][0]
     print('Published 520870 IOPV=%s upstream_time=%s source=%s' % (
         row['f441'], result['relay']['quote_time_bjt'], result['relay']['source']))

@@ -8,13 +8,18 @@ on:
     paths: ['publish.py', '.github/workflows/update.yml']
 permissions:
   contents: write
+  pages: write
+  id-token: write
 concurrency:
   group: brazil-iopv-publication
   cancel-in-progress: false
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,3 +42,12 @@ jobs:
           fi
           git commit -m 'data: refresh public 520870 IOPV'
           git push origin HEAD:master
+      - uses: actions/configure-pages@v5
+        if: hashFiles('_site/quote.json') != ''
+      - uses: actions/upload-pages-artifact@v3
+        if: hashFiles('_site/quote.json') != ''
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
+        if: hashFiles('_site/quote.json') != ''
+        id: deployment
