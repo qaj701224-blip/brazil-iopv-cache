@@ -1,5 +1,14 @@
 # Brazil ETF IOPV Cache
 
+## Validation Status (2026-10-15)
+
+Publication succeeded on GitHub Actions (runs 38673490644, 38673601003,
+38673855593). The upstream quote at 10:59:11 BJT reported IOPV 1.3037.
+However, JoinQuant native probes timed out connecting to Raw, API, and Pages.
+This is NOT a usable production relay yet. The scheduled workflow was disabled
+after validation; the remaining quote is an archived sample, NOT a live feed.
+Do not enable or consume it for production without fresh end-to-end validation.
+
 Read-only fallback for public `520870` IOPV quotes. Contains no account,
 positions, order interfaces, trading credentials, or private strategy source.
 
