@@ -1,0 +1,39 @@
+name: Update Brazil ETF IOPV
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 1-7 * * 1-5'
+  push:
+    branches: [master]
+    paths: ['publish.py', '.github/workflows/update.yml']
+permissions:
+  contents: write
+concurrency:
+  group: brazil-iopv-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate snapshot parser
+        run: python -m unittest -q
+      - name: Fetch a fresh public quote
+        run: python publish.py
+      - name: Publish only the public quote
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ ! -f quote.json ]; then
+            exit 0
+          fi
+          git add quote.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'data: refresh public 520870 IOPV'
+          git push origin HEAD:master
