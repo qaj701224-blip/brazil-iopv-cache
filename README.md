@@ -5,9 +5,13 @@
 Publication succeeded on GitHub Actions (runs 38673490644, 38673601003,
 38673855593). The upstream quote at 10:59:11 BJT reported IOPV 1.3037.
 However, JoinQuant native probes timed out connecting to Raw, API, and Pages.
-This is NOT a usable production relay yet. The scheduled workflow was disabled
-after validation; the remaining quote is an archived sample, NOT a live feed.
-Do not enable or consume it for production without fresh end-to-end validation.
+Direct HTTP access from JoinQuant remains unverified/unavailable. After that
+test, the workflow was re-enabled as a PUBLIC UPSTREAM for a separate local
+original-IOPV DNS publisher. A 2026-10-15 11:28 BJT JoinQuant probe successfully
+read original IOPV 1.3037 through that DNS path, not through GitHub HTTP.
+The consumer preserves the original quote timestamp and rejects initial reads
+older than 300 seconds. Scheduling delays can still prevent a fresh quote;
+the workflow does not promise a five-minute delivery SLA.
 
 Read-only fallback for public `520870` IOPV quotes. Contains no account,
 positions, order interfaces, trading credentials, or private strategy source.
