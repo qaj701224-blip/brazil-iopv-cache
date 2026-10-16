@@ -4,17 +4,17 @@
     "diff": [
       {
         "f12": "520870",
-        "f124": 1792034897,
-        "f297": 20261015,
-        "f441": 1.3037
+        "f124": 1792127501,
+        "f297": 20261016,
+        "f441": 1.2896
       }
     ]
   },
   "relay": {
     "schema_version": 1,
     "source": "push2delay.eastmoney.com/ulist.np/get",
-    "quote_time_bjt": "2026-10-15T11:28:17+08:00",
-    "published_at_bjt": "2026-10-15T11:28:19.355304+08:00",
+    "quote_time_bjt": "2026-10-16T13:11:41+08:00",
+    "published_at_bjt": "2026-10-16T13:11:43.504337+08:00",
     "max_quote_age_seconds": 300
   }
 }
