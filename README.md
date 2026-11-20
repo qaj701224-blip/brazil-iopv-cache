@@ -1,5 +1,9 @@
 # Brazil ETF IOPV Cache
 
+Scheduled publication has been paused since 2026-11-20. The retained
+`quote.json` is a historical snapshot. Check the original quote timestamp
+before using the data.
+
 ## Validation Status (2026-10-15)
 
 Publication succeeded on GitHub Actions (runs 38673490644, 38673601003,
@@ -16,8 +20,8 @@ the workflow does not promise a five-minute delivery SLA.
 Read-only fallback for public `520870` IOPV quotes. Contains no account,
 positions, order interfaces, trading credentials, or private strategy source.
 
-GitHub Actions attempts publication every five minutes on weekdays during
-A-share sessions. GitHub scheduling can be delayed; this is not a real-time SLA.
+When enabled, GitHub Actions attempts publication every five minutes on
+weekdays during A-share sessions. GitHub scheduling can be delayed.
 Consumers must check the ORIGINAL upstream `f124` timestamp and `f297` date.
 Quotes older than 300 seconds must not create an entry. Publication time never
 replaces upstream time. Failed fetches do not refresh an old quote.
@@ -32,5 +36,5 @@ connectivity validation. Pages deployment adds latency; original quote age
 must still be within 300 seconds. A successful publish is not proof that a
 JoinQuant runtime can reach either GitHub endpoint.
 
-The default branch is `master`. Run `python -m unittest -q` to validate and
-`python publish.py` during a session to fetch a fresh snapshot.
+The default branch is `master`. Run `python -m unittest -q` to validate locally.
+The update workflow and publisher remain available for a future resumption.
